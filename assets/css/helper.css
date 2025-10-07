@@ -1,0 +1,119 @@
+.direction-ltr {
+    direction: ltr;
+}
+/* DropDown  */
+.dropdown {
+    position: absolute;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px) scale(0.95);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: none;
+}
+.dropdown.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+    pointer-events: auto;
+}
+.bg-active{
+    background-color: rgba(214, 209, 227, 1);
+    color: #5A409B;
+}
+.bg-active .bg-primary-light{
+    background-color: transparent;
+}
+/* animation for list of ddl  */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+.dropdown.active .notification-item {
+    animation: slideIn 0.3s ease forwards;
+    opacity: 0;
+}
+
+/* responsive style  */
+@media (min-width: 1024px) {
+    .link-text,
+    .logo-text,
+    .title-group {
+        transition: none;
+    }
+
+    #sidebar.collapsed {
+        width: 114px;
+    }
+
+    #sidebar.collapsed .link-text,
+    #sidebar.collapsed .logo-text,
+    #sidebar.collapsed .title-group {
+        display: none;
+    }
+
+    #sidebar.collapsed .logo-side {
+        /* gap: 1rem; */
+        justify-content: center;
+        margin-bottom: 25px;
+    }
+
+    #sidebar.collapsed .nav-link,
+    #sidebar.collapsed .logo {
+        gap: 0;
+    }
+
+    #sidebar.collapsed .nav-link {
+        justify-content: center;
+        padding: 0.5rem;
+    }
+
+    #sidebar.collapsed .collapse-icon img {
+        transform: rotate(180deg);
+        position: absolute;
+        right: 5px;
+        top: 25px;
+        transition: 0.3s ease-in-out;
+        z-index: 2;
+    }
+
+    #sidebar.collapsed .title-group {
+        height: 0;
+        padding: 0;
+        margin: 0;
+    }
+}
+@media (max-width: 1024px) {
+    #sidebar {
+        position: fixed;
+        right: -268px;
+        top: 0;
+        z-index: 1000;
+        height: 100dvh;
+        background-color: #fff;
+        transition: right 0.3s ease;
+    }
+    #sidebar.active {
+        right: 0;
+    }
+    .dropdown-side {
+        left: 0 !important;
+        right: 0 !important;
+        margin-left: auto !important;
+        margin-right: 20px !important;
+        z-index: 10 !important;
+        bottom: 50px !important;
+        max-width: 320px;
+    }
+    .links-side{
+        height: calc(100dvh - 80px);
+        overflow-y: auto;
+        overflow-x: hidden;
+        padding-bottom: 20px;
+    }
+}
